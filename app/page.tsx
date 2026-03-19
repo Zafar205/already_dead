@@ -96,36 +96,36 @@ export default function LandingPage() {
     <div id="top" className="min-h-screen bg-[#f5f5f5] text-black flex flex-col font-sans overflow-x-hidden">
       
       {/* Top Navigation */}
-      <header className="flex h-16 border-b-[3px] border-black bg-white z-50 relative w-full">
-        <div className="flex-1 flex items-center gap-4 px-6 border-r-[3px] border-black">
-          <Menu className="w-6 h-6 cursor-pointer" strokeWidth={2.5} />
-          <span className="text-sm font-bold tracking-widest cursor-pointer">CATALOG</span>
+      <header className="flex h-14 md:h-16 border-b-[3px] border-black bg-white z-50 relative w-full">
+        <div className="flex-1 flex items-center gap-2 md:gap-4 px-3 md:px-6 border-r-[3px] border-black min-w-0">
+          <Menu className="w-5 h-5 md:w-6 md:h-6 cursor-pointer" strokeWidth={2.5} />
+          <span className="text-xs md:text-sm font-bold tracking-wider md:tracking-widest cursor-pointer truncate">CATALOG</span>
         </div>
-        <div className="flex-[2] flex items-center justify-center border-r-[3px] border-black overflow-hidden relative">
-          <img src="/already_dead.jpeg" alt="Already Dead" className="h-12 w-auto object-contain" />
+        <div className="flex-[0.9] md:flex-[2] flex items-center justify-center border-r-[3px] border-black overflow-hidden relative">
+          <img src="/already_dead.jpeg" alt="Already Dead" className="h-8 md:h-12 w-auto object-contain" />
         </div>
-        <div className="flex-1 flex items-center justify-end gap-6 px-6 text-sm font-semibold tracking-wide">
-          <Search className="w-5 h-5 cursor-pointer" strokeWidth={2.5} />
-          <Heart className="w-5 h-5 cursor-pointer" strokeWidth={2.5} />
-          <User className="w-5 h-5 cursor-pointer" strokeWidth={2.5} />
-          <span className="cursor-pointer ml-2">CART (0)</span>
+        <div className="flex-1 flex items-center justify-end gap-3 md:gap-6 px-3 md:px-6 text-xs md:text-sm font-semibold tracking-wide">
+          <Search className="w-4 h-4 md:w-5 md:h-5 cursor-pointer" strokeWidth={2.5} />
+          <Heart className="w-4 h-4 md:w-5 md:h-5 cursor-pointer" strokeWidth={2.5} />
+          <User className="w-4 h-4 md:w-5 md:h-5 cursor-pointer" strokeWidth={2.5} />
+          <span className="cursor-pointer ml-1 md:ml-2">CART (0)</span>
         </div>
       </header>
 
       {/* Hero Section */}
-      <main className="relative flex flex-col items-center justify-start w-full h-[95vh] bg-white">
+      <main className="relative flex flex-col items-center justify-start w-full h-[78vh] md:h-[95vh] bg-white overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center overflow-hidden z-0 pointer-events-none">
-          <h2 className={`${logoTextFont.className} w-full px-6 -translate-y-8 text-center text-[16vw] text-[#1a1a1a] leading-[0.9] tracking-tight select-none`} style={{ transform: 'scaleY(1.3)' }}>
+          <h2 className={`${logoTextFont.className} w-full px-4 md:px-6 -translate-y-2 md:-translate-y-8 text-center text-[clamp(4rem,22vw,16vw)] text-[#1a1a1a] leading-[0.9] tracking-tight select-none`} style={{ transform: 'scaleY(1.25)' }}>
             ALREADY DEAD
           </h2>
         </div>
         <div className="relative z-10 w-full max-w-3xl h-full mt-0 flex justify-center items-start">
-          <img src="/hero_pic.png" alt="Model wearing custom jeans" className="w-auto h-[108%] max-h-none object-contain object-top" />
+          <img src="/hero_pic.png" alt="Model wearing custom jeans" className="w-auto h-[96%] md:h-[108%] max-h-none object-contain object-top" />
         </div>
         {/* Adjusted to full width with px-6 padding */}
-        <div className="absolute bottom-6 w-full px-6 z-20">
-          <button className="w-full bg-[#1a1a1a] hover:bg-black text-white rounded-[20px] flex items-center justify-between px-8 py-5 transition-all duration-300">
-            <span className="text-lg font-medium tracking-wider">SHOP NOW</span>
+        <div className="absolute bottom-4 md:bottom-6 w-full px-4 md:px-6 z-20">
+          <button className="w-full bg-[#1a1a1a] hover:bg-black text-white rounded-[20px] flex items-center justify-between px-6 md:px-8 py-4 md:py-5 transition-all duration-300">
+            <span className="text-base md:text-lg font-medium tracking-wider">SHOP NOW</span>
             <MoveRight className="w-6 h-6 text-gray-400" />
           </button>
         </div>
@@ -133,7 +133,7 @@ export default function LandingPage() {
 
       {/* Products Section */}
       {/* Adjusted to full width with px-6 padding */}
-      <section className="w-full px-6 mx-auto mt-12 mb-20 flex flex-col gap-4">
+      <section className="w-full px-4 md:px-6 mx-auto mt-8 md:mt-12 mb-14 md:mb-20 flex flex-col gap-4">
         {/* Ticker */}
         <div className="w-full border-[3px] border-black rounded-xl py-3 flex overflow-hidden bg-white select-none">
           <div className="flex whitespace-nowrap text-xs font-bold tracking-[0.2em] text-black/80">
@@ -186,11 +186,11 @@ export default function LandingPage() {
       </section>
 
       {/* FAQ & ADVANTAGES SECTION */}
-      <section className="w-full bg-[#1a1a1a] py-16 px-6 flex flex-col items-center border-y-[3px] border-black">
+      <section className="w-full bg-[#1a1a1a] py-10 md:py-16 px-4 md:px-6 flex flex-col items-center border-y-[3px] border-black">
         {/* Adjusted to full width max-w-none */}
         <div className="w-full flex justify-between items-start mb-10">
           <span className="text-gray-400 font-bold tracking-widest text-sm hidden md:block mt-4">ADVANTAGES</span>
-          <h2 className={`${logoTextFont.className} text-white text-5xl md:text-7xl lg:text-[6rem] tracking-tight text-center leading-[0.9] uppercase`}>ADVANTAGES<br />AND QUESTIONS</h2>
+          <h2 className={`${logoTextFont.className} text-white text-4xl md:text-7xl lg:text-[6rem] tracking-tight text-center leading-[0.9] uppercase`}>ADVANTAGES<br />AND QUESTIONS</h2>
           <span className="text-gray-400 font-bold tracking-widest text-sm hidden md:block mt-4">QUESTIONS</span>
         </div>
         {/* Adjusted to full width max-w-none */}
@@ -231,7 +231,7 @@ export default function LandingPage() {
 
       {/* --- NEW STAGES OF WORK SECTION --- */}
       {/* Adjusted to full width with px-6 padding */}
-      <section className="w-full px-6 mx-auto mt-12 mb-12 flex flex-col lg:flex-row gap-4">
+      <section className="w-full px-4 md:px-6 mx-auto mt-8 md:mt-12 mb-10 md:mb-12 flex flex-col lg:flex-row gap-4">
         
         {/* Left Side: Timeline Block */}
         <div className="flex-1 bg-white border-[3px] border-black rounded-2xl relative overflow-hidden flex flex-col justify-between p-6 md:p-10 z-0">
@@ -277,20 +277,20 @@ export default function LandingPage() {
         </div>
 
         {/* Right Side: Stages Duct Tape Banner */}
-        <div className="w-full lg:w-[280px] bg-white border-[3px] border-black rounded-2xl relative overflow-hidden flex items-center justify-center min-h-[500px]">
+        <div className="w-full lg:w-[280px] bg-white border-[3px] border-black rounded-2xl relative overflow-hidden flex items-center justify-center min-h-[260px] md:min-h-[500px]">
            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-             <span className={`${logoTextFont.className} rotate-90 text-[110px] tracking-tight text-[#1a1a1a] leading-none whitespace-nowrap`}>
+             <span className={`${logoTextFont.className} rotate-90 text-[64px] md:text-[110px] tracking-tight text-[#1a1a1a] leading-none whitespace-nowrap`}>
                STAGES OF WORK
              </span>
            </div>
            
            {/* CSS Duct Tape Graphic */}
            <div 
-              className="absolute w-[85%] h-[40%] bg-gradient-to-br from-zinc-300 via-zinc-400 to-zinc-300 shadow-xl opacity-95 flex items-center justify-center border-y-[2px] border-zinc-200" 
+                className="absolute w-[88%] md:w-[85%] h-[34%] md:h-[40%] bg-gradient-to-br from-zinc-300 via-zinc-400 to-zinc-300 shadow-xl opacity-95 flex items-center justify-center border-y-[2px] border-zinc-200" 
               style={{ clipPath: 'polygon(2% 4%, 99% 1%, 97% 98%, 0% 95%)' }}
            >
               <div className="absolute inset-0 bg-white opacity-10 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:4px_4px]"></div>
-              <span className={`${logoTextFont.className} rotate-90 text-white text-4xl tracking-wide drop-shadow-md z-10 whitespace-nowrap`}>
+                <span className={`${logoTextFont.className} rotate-90 text-white text-[28px] md:text-4xl tracking-wide drop-shadow-md z-10 whitespace-nowrap`}>
                 STAGES OF WORK
               </span>
            </div>
@@ -299,7 +299,7 @@ export default function LandingPage() {
 
       {/* --- NEW FOOTER --- */}
       {/* Adjusted to full width with px-6 padding */}
-      <footer className="w-full px-6 mx-auto mb-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+      <footer className="w-full px-4 md:px-6 mx-auto mb-6 grid grid-cols-1 md:grid-cols-3 gap-4">
         
         {/* Column 1: Newsletter & Socials */}
         <div className="bg-white border-[3px] border-black rounded-2xl p-8 flex flex-col justify-between min-h-[300px]">
@@ -342,18 +342,11 @@ export default function LandingPage() {
 
         {/* Column 3: Contact & Scroll Top */}
         <div className="bg-white border-[3px] border-black rounded-2xl p-8 flex flex-col justify-between">
-          <div className="flex items-center justify-between cursor-pointer group">
+          <div className="flex items-start justify-between">
             <h4 className="font-bold text-sm tracking-wider">CONTACT</h4>
-            <Plus className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors" />
-          </div>
-          
-          <div className="flex justify-end mt-auto">
-            <a
-              href="#top"
-              className="text-xs font-bold tracking-widest flex items-center gap-1 hover:text-gray-500 transition-colors"
-            >
-              UP <ChevronUp className="w-4 h-4" />
-            </a>
+            <div className="flex flex-col items-end text-black">
+              <Plus className="w-6 h-6" />
+            </div>
           </div>
         </div>
 
