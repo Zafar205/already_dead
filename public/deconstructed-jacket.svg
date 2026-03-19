@@ -1,0 +1,23 @@
+<svg width="800" height="1000" viewBox="0 0 800 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1000" fill="#0C0C0C"/>
+  <rect x="40" y="40" width="720" height="920" stroke="#2A2A2A" stroke-width="2"/>
+
+  <path d="M280 170L400 110L520 170L560 330L520 845H280L240 330L280 170Z" fill="#696969"/>
+  <path d="M400 110V845" stroke="#111111" stroke-width="4"/>
+  <path d="M300 260H500" stroke="#212121" stroke-width="10"/>
+  <path d="M300 330H500" stroke="#212121" stroke-width="10"/>
+  <path d="M300 400H500" stroke="#212121" stroke-width="10"/>
+  <path d="M300 470H500" stroke="#212121" stroke-width="10"/>
+  <path d="M300 540H500" stroke="#212121" stroke-width="10"/>
+  <path d="M300 610H500" stroke="#212121" stroke-width="10"/>
+  <path d="M300 680H500" stroke="#212121" stroke-width="10"/>
+
+  <rect x="235" y="300" width="56" height="240" fill="#4D4D4D"/>
+  <rect x="509" y="300" width="56" height="240" fill="#4D4D4D"/>
+
+  <line x1="285" y1="190" x2="257" y2="310" stroke="#111111" stroke-width="4"/>
+  <line x1="515" y1="190" x2="543" y2="310" stroke="#111111" stroke-width="4"/>
+
+  <rect x="350" y="148" width="100" height="70" fill="#5A5A5A"/>
+  <circle cx="700" cy="80" r="5" fill="#FF0000"/>
+</svg>
