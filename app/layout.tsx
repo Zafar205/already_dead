@@ -15,8 +15,8 @@ const bodyFont = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ALREADY DEAD | DarkPhantom2013",
-  description: "Ultra-minimal dystopian brutalist storefront for ALREADY DEAD.",
+  title: "Dark Phantom Store | Official Merch",
+  description: "Official Dark Phantom merch store for limited drops, signature pieces, and creator gear.",
 };
 
 export default function RootLayout({

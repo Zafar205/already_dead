@@ -62,8 +62,8 @@ export default function CheckoutForm({ productSlug, productTitle }: CheckoutForm
 
   return (
     <form className="mt-8 border-t border-black/10 pt-6" onSubmit={handleSubmit}>
-      <h2 className="text-sm font-bold uppercase tracking-[0.16em]">Order this product</h2>
-      <p className="mt-2 text-xs text-black/65">Provide your details to place the order.</p>
+      <h2 className="text-sm font-bold uppercase tracking-[0.16em]">Secure your merch</h2>
+      <p className="mt-2 text-xs text-black/65">Enter your details to complete your Dark Phantom order.</p>
 
       <div className="mt-4 grid grid-cols-1 gap-3">
         <input
@@ -76,7 +76,7 @@ export default function CheckoutForm({ productSlug, productTitle }: CheckoutForm
         />
         <input
           type="email"
-          placeholder="Email"
+          placeholder="Email address"
           value={customerEmail}
           onChange={(event) => setCustomerEmail(event.target.value)}
           required
@@ -84,7 +84,7 @@ export default function CheckoutForm({ productSlug, productTitle }: CheckoutForm
         />
         <input
           type="tel"
-          placeholder="Phone"
+          placeholder="Phone number"
           value={customerPhone}
           onChange={(event) => setCustomerPhone(event.target.value)}
           required
@@ -107,7 +107,7 @@ export default function CheckoutForm({ productSlug, productTitle }: CheckoutForm
           disabled={isLoading}
           className="rounded-full bg-black px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-black/85 disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {isLoading ? "Processing..." : `Place order for ${productTitle}`}
+          {isLoading ? "Processing order..." : `Order ${productTitle}`}
         </button>
       </div>
     </form>

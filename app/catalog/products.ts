@@ -11,42 +11,42 @@ export type Product = {
 export const defaultProducts: Product[] = [
   {
     id: 1,
-    slug: "t-shirt-vlom-cust",
-    title: "T-Shirt VLOM.CUST",
-    color: "Vintage Grey",
+    slug: "dark-phantom-shadow-tee",
+    title: "Dark Phantom Shadow Tee",
+    color: "Ash Grey",
     price: 39,
     image: "/product_1.jpeg",
     description:
-      "Hand-finished oversized t-shirt with washed texture and signature custom graphics.",
+      "Signature oversized tee inspired by Dark Phantom visuals, built with a washed texture and clean front print.",
   },
   {
     id: 2,
-    slug: "cartholder-vlom-cust",
-    title: "Cartholder VLOM.CUST",
-    color: "Grey",
+    slug: "phantom-utility-wallet",
+    title: "Phantom Utility Wallet",
+    color: "Concrete Grey",
     price: 39,
     image: "/product_2.jpeg",
     description:
-      "Compact everyday cardholder with minimal profile and custom brand detailing.",
+      "Minimal everyday wallet with a slim profile, clean stitching, and subtle Dark Phantom detailing.",
   },
   {
     id: 3,
-    slug: "calligraphy-backpack",
-    title: "Calligraphy Backpack",
-    color: "Black",
+    slug: "void-signal-backpack",
+    title: "Void Signal Backpack",
+    color: "Midnight Black",
     price: 78,
     image: "/product_3.jpeg",
     description:
-      "Urban backpack with hand-drawn calligraphy accents and utility-focused structure.",
+      "Durable daypack with utility compartments and graphics influenced by the Dark Phantom channel aesthetic.",
   },
   {
     id: 4,
-    slug: "leather-jacket-vlom-cust",
-    title: "Leather Jacket VLOM.CUST",
-    color: "Vintage Grey",
+    slug: "night-raid-jacket",
+    title: "Night Raid Jacket",
+    color: "Smoke Grey",
     price: 39,
     image: "/product_4.jpeg",
     description:
-      "Statement leather jacket customized for a distressed, gallery-ready street silhouette.",
+      "Statement outerwear piece designed for a bold street silhouette with a subtle Dark Phantom edge.",
   },
 ];

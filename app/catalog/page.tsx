@@ -5,8 +5,8 @@ import CatalogShell from "./CatalogShell";
 import { getAllProducts } from "@/lib/productsRepo";
 
 export const metadata: Metadata = {
-  title: "Catalog | ALREADY DEAD",
-  description: "Browse all currently available products.",
+  title: "Merch Catalog | Dark Phantom Store",
+  description: "Browse all currently available Dark Phantom merch.",
 };
 
 export const dynamic = "force-dynamic";
@@ -19,10 +19,10 @@ export default async function CatalogPage() {
       <main className="px-4 py-10 text-black md:px-6 md:py-14">
         <section className="mx-auto w-full max-w-6xl">
           <div className="mb-8 flex flex-col gap-3 md:mb-10">
-            <p className="text-xs font-semibold tracking-[0.24em] text-black/70">ALREADY DEAD</p>
-            <h1 className="text-4xl font-bold uppercase tracking-tight md:text-6xl">Catalog</h1>
+            <p className="text-xs font-semibold tracking-[0.24em] text-black/70">DARK PHANTOM STORE</p>
+            <h1 className="text-4xl font-bold uppercase tracking-tight md:text-6xl">Merch Catalog</h1>
             <p className="max-w-2xl text-sm text-black/70 md:text-base">
-              Current drop includes four available products. Open any card to see the full product page.
+              Explore the latest Dark Phantom drop. Open any item to view details and place your order.
             </p>
           </div>
 

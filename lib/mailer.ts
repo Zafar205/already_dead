@@ -50,14 +50,14 @@ export async function sendOrderPaidEmail(input: OrderPaidEmailInput) {
 
   const html = `
     <div style="font-family: Arial, sans-serif; max-width: 560px; margin: 0 auto;">
-      <h2 style="margin-bottom: 8px;">Order confirmed</h2>
+      <h2 style="margin-bottom: 8px;">Dark Phantom order confirmed</h2>
       <p style="margin-top: 0; color: #333;">Hi ${input.customerName}, your payment was successful.</p>
       <div style="border: 1px solid #ddd; border-radius: 10px; padding: 16px; margin: 20px 0;">
         <p style="margin: 0 0 8px 0;"><strong>Order ID:</strong> ${input.orderId}</p>
         <p style="margin: 0 0 8px 0;"><strong>Product:</strong> ${input.productTitle}</p>
         <p style="margin: 0;"><strong>Total:</strong> $${amount}</p>
       </div>
-      <p style="margin-bottom: 0; color: #333;">You can continue shopping here:</p>
+      <p style="margin-bottom: 0; color: #333;">Explore more Dark Phantom merch here:</p>
       <p style="margin-top: 6px;"><a href="${input.siteUrl}/catalog">${input.siteUrl}/catalog</a></p>
     </div>
   `;
@@ -65,7 +65,7 @@ export async function sendOrderPaidEmail(input: OrderPaidEmailInput) {
   await transporter.sendMail({
     from,
     to: input.to,
-    subject: "Your ALREADY DEAD order is confirmed",
+    subject: "Your Dark Phantom order is confirmed",
     html,
   });
 }
@@ -77,7 +77,7 @@ export async function sendOrderReceivedEmail(input: OrderReceivedEmailInput) {
 
   const html = `
     <div style="font-family: Arial, sans-serif; max-width: 560px; margin: 0 auto;">
-      <h2 style="margin-bottom: 8px;">Order received</h2>
+      <h2 style="margin-bottom: 8px;">Dark Phantom order received</h2>
       <p style="margin-top: 0; color: #333;">Hi ${input.customerName}, we received your order successfully.</p>
       <div style="border: 1px solid #ddd; border-radius: 10px; padding: 16px; margin: 20px 0;">
         <p style="margin: 0 0 8px 0;"><strong>Order ID:</strong> ${input.orderId}</p>
@@ -91,7 +91,7 @@ export async function sendOrderReceivedEmail(input: OrderReceivedEmailInput) {
   await transporter.sendMail({
     from,
     to: input.to,
-    subject: "We received your ALREADY DEAD order",
+    subject: "We received your Dark Phantom order",
     html,
   });
 }

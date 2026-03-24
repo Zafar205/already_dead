@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Search, Heart, User, MoveRight, Plus, Instagram, Send, MessageCircle, Pin, Video, ChevronUp } from 'lucide-react';
+import { Search, Heart, User, MoveRight, Plus, Instagram, Send, MessageCircle, Pin, Video } from 'lucide-react';
 import localFont from 'next/font/local';
 
 const logoTextFont = localFont({
@@ -11,83 +11,83 @@ const logoTextFont = localFont({
 // Mock Data for the products
 const products = [
   {
-    id: 1, title: "T-SHIRT VLOM.CUST", color: "Vintage grey", oldPrice: 60, price: 39, discount: "35% OFF", image: "/product_1.jpeg"
+    id: 1, title: "DARK PHANTOM SHADOW TEE", color: "Ash Grey", oldPrice: 60, price: 39, discount: "DROP PRICE", image: "/product_1.jpeg"
   },
   {
-    id: 2, title: "CARTHOLDER VLOM.CUST", color: "Grey", price: 39, image: "/product_2.jpeg"
+    id: 2, title: "PHANTOM UTILITY WALLET", color: "Concrete Grey", price: 39, image: "/product_2.jpeg"
   },
   {
-    id: 3, title: "CALLIGRAPHY BACKPACK", color: "Black", oldPrice: 92, price: 78, discount: "35% OFF", image: "/product_3.jpeg"
+    id: 3, title: "VOID SIGNAL BACKPACK", color: "Midnight Black", oldPrice: 92, price: 78, discount: "DROP PRICE", image: "/product_3.jpeg"
   },
   {
-    id: 4, title: "LEATHER JACKET VLOM.CUST", color: "Vintage grey", price: 39, image: "/product_4.jpeg"
+    id: 4, title: "NIGHT RAID JACKET", color: "Smoke Grey", price: 39, image: "/product_4.jpeg"
   },
   {
-    id: 5, title: "SNEAKERS VLOM.CUST", color: "Black and white", oldPrice: 69, price: 55, discount: "35% OFF", image: "/product_2.jpeg"
+    id: 5, title: "DARK PHANTOM RUNNERS", color: "Black and White", oldPrice: 69, price: 55, discount: "DROP PRICE", image: "/product_2.jpeg"
   }
 ];
 
 // Mock Data for Advantages & FAQs
 const advantages = [
-  "We use only premium paints",
-  "We work with different types of paint",
-  "6 years of experience creating custom items",
-  "Free sketch development",
-  "Support throughout the entire process"
+  "Official merch direction inspired by Dark Phantom visuals",
+  "Limited-batch drops to keep every release rare",
+  "Premium print and material quality across all pieces",
+  "Fast support for order updates and sizing questions",
+  "Worldwide shipping with secure checkout flow"
 ];
 
 const faqs = [
-  "Can the pattern be erased during washing?",
-  "Do I need to provide my own thing for painting?",
-  "When will I receive the finished product?",
-  "How much does the job cost and what affects the cost?",
-  "How will I receive the finished product or will I be able to send my item?",
-  "Is it possible to wash the product? How to take care of painted clothes?"
+  "When does the next Dark Phantom drop go live?",
+  "How do I know which size to choose?",
+  "Do you ship internationally?",
+  "How long does order processing usually take?",
+  "Will sold-out items restock?",
+  "How should I wash and care for merch pieces?"
 ];
 
 // Mock Data for Timeline
 const timelineStages = [
   {
-    title: "Application and discussion\nof the layout",
+    title: "Drop announce\nand preview",
     align: "right",
     bullets: [
-      "Write to us on social networks, by e-mail or place an order on the website",
-      "Managers will contact you to find out all your wishes",
-      "Let's clarify all the details of the layout: location, colors and ideas"
+      "Dark Phantom announces the release window across socials",
+      "We publish previews and product details for each item",
+      "You pick your gear before the drop sells out"
     ]
   },
   {
-    title: "Delivery of clothes\nto our address",
+    title: "Choose your\nmerch setup",
     align: "left",
     bullets: [
-      "Customization can be done:\n  · on your old clothes, shoes or accessories\n  · on your new clothes, shoes, or accessories that you purchased for customization\n  · on clothes, shoes or accessories that we will find and buy for you",
-      "Send your clothes to us if you are in another city",
-      "We will buy clothes, shoes or accessories for your painting ourselves"
+      "Pick your style, size, and preferred colorway",
+      "Add your shipping info and place your order securely",
+      "You get an instant confirmation after checkout"
     ]
   },
   {
-    title: "Customization",
+    title: "Order\nprocessing",
     align: "right",
     bullets: [
-      "Customization takes 2-7 days",
-      "As we work, we will keep you updated with photos of the progress",
-      "You can make your own adjustments"
+      "Each order is reviewed and prepared by the team",
+      "You receive status updates as your order moves forward",
+      "Tracking becomes available as soon as shipment is ready"
     ]
   },
   {
-    title: "Fixing the work",
+    title: "Quality\ncheck",
     align: "left",
     bullets: [
-      "We use a special compound to varnish shoes, which protects both the surface and the pattern",
-      "We fix the pattern on the clothes using heat treatment"
+      "Every item is inspected before packing",
+      "Final packaging is secured for safe delivery"
     ]
   },
   {
     title: "Delivery",
     align: "right",
     bullets: [
-      "As soon as the order is ready, we will ship it to you",
-      "If you are in the same city with us, we will deliver your order personally"
+      "Your order ships to your address with tracking",
+      "You receive your Dark Phantom merch ready to wear"
     ]
   }
 ];
@@ -99,16 +99,16 @@ export default function LandingPage() {
       {/* Top Navigation */}
       <header className="flex h-14 md:h-16 border-b-[3px] border-black bg-white z-50 relative w-full">
         <Link href="/catalog" className="flex-1 flex items-center px-3 md:px-6 border-r-[3px] border-black min-w-0">
-          <span className="text-xs md:text-sm font-bold tracking-wider md:tracking-widest cursor-pointer truncate">CATALOG</span>
+          <span className="text-xs md:text-sm font-bold tracking-wider md:tracking-widest cursor-pointer truncate">MERCH</span>
         </Link>
         <div className="flex-[0.9] md:flex-[2] flex items-center justify-center border-r-[3px] border-black overflow-hidden relative">
-          <img src="/already_dead.jpeg" alt="Already Dead" className="h-8 md:h-12 w-auto object-contain" />
+          <img src="/already_dead.jpeg" alt="Dark Phantom Store" className="h-8 md:h-12 w-auto object-contain" />
         </div>
         <div className="flex-1 flex items-center justify-end gap-3 md:gap-6 px-3 md:px-6 text-xs md:text-sm font-semibold tracking-wide">
           <Search className="w-4 h-4 md:w-5 md:h-5 cursor-pointer" strokeWidth={2.5} />
           <Heart className="w-4 h-4 md:w-5 md:h-5 cursor-pointer" strokeWidth={2.5} />
           <User className="w-4 h-4 md:w-5 md:h-5 cursor-pointer" strokeWidth={2.5} />
-          <span className="cursor-pointer ml-1 md:ml-2">CART (0)</span>
+          <span className="cursor-pointer ml-1 md:ml-2">BAG (0)</span>
         </div>
       </header>
 
@@ -125,7 +125,7 @@ export default function LandingPage() {
         {/* Adjusted to full width with px-6 padding */}
         <div className="absolute bottom-4 md:bottom-6 w-full px-4 md:px-6 z-20">
           <button className="w-full bg-[#1a1a1a] hover:bg-black text-white rounded-[20px] flex items-center justify-between px-6 md:px-8 py-4 md:py-5 transition-all duration-300">
-            <span className="text-base md:text-lg font-medium tracking-wider">SHOP NOW</span>
+            <span className="text-base md:text-lg font-medium tracking-wider">SHOP DARK PHANTOM MERCH</span>
             <MoveRight className="w-6 h-6 text-gray-400" />
           </button>
         </div>
@@ -138,7 +138,7 @@ export default function LandingPage() {
         <div className="w-full border-[3px] border-black rounded-xl py-3 flex overflow-hidden bg-white select-none">
           <div className="flex whitespace-nowrap text-xs font-bold tracking-[0.2em] text-black/80">
             {Array.from({ length: 15 }).map((_, i) => (
-              <span key={i} className="mx-3">/ BESTSELLER</span>
+              <span key={i} className="mx-3">/ DARK PHANTOM DROP</span>
             ))}
           </div>
         </div>
@@ -148,11 +148,11 @@ export default function LandingPage() {
           {/* Left Sidebar (Spans 2 rows) */}
           <div className="relative lg:col-span-1 lg:row-span-2 border-[3px] border-black rounded-xl bg-white overflow-hidden flex items-center justify-center min-h-[500px]">
              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-               <span className={`${logoTextFont.className} -rotate-90 text-[110px] tracking-tight text-[#1a1a1a] leading-none whitespace-nowrap`}>BESTSELLER</span>
+               <span className={`${logoTextFont.className} -rotate-90 text-[110px] tracking-tight text-[#1a1a1a] leading-none whitespace-nowrap`}>PHANTOM DROP</span>
              </div>
              <div className="absolute w-[70%] h-[55%] bg-gradient-to-br from-zinc-300 via-zinc-400 to-zinc-300 shadow-xl opacity-95 flex items-center justify-center border-x-[2px] border-zinc-200" style={{ clipPath: 'polygon(4% 1%, 98% 3%, 96% 99%, 0% 96%)' }}>
                 <div className="absolute inset-0 bg-white opacity-10 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:4px_4px]"></div>
-                <span className={`${logoTextFont.className} -rotate-90 text-white text-5xl tracking-wide drop-shadow-md z-10`}>BESTSELLER</span>
+                <span className={`${logoTextFont.className} -rotate-90 text-white text-5xl tracking-wide drop-shadow-md z-10`}>PHANTOM DROP</span>
              </div>
           </div>
 
@@ -178,7 +178,7 @@ export default function LandingPage() {
           {/* Bottom Right CTA Card */}
           <div className="border-[3px] border-black rounded-xl bg-white flex items-center justify-center p-6 min-h-[360px]">
             <Link href="/catalog" className="bg-[#1a1a1a] hover:bg-black text-white rounded-xl px-6 py-4 flex items-center gap-3 transition-colors shadow-lg">
-              <span className="text-sm font-semibold tracking-wider">VIEW LOOKS</span>
+              <span className="text-sm font-semibold tracking-wider">VIEW ALL MERCH</span>
               <MoveRight className="w-5 h-5" />
             </Link>
           </div>
@@ -189,15 +189,15 @@ export default function LandingPage() {
       <section className="w-full bg-[#1a1a1a] py-10 md:py-16 px-4 md:px-6 flex flex-col items-center border-y-[3px] border-black">
         {/* Adjusted to full width max-w-none */}
         <div className="w-full flex justify-between items-start mb-10">
-          <span className="text-gray-400 font-bold tracking-widest text-sm hidden md:block mt-4">ADVANTAGES</span>
-          <h2 className={`${logoTextFont.className} text-white text-4xl md:text-7xl lg:text-[6rem] tracking-tight text-center leading-[0.9] uppercase`}>ADVANTAGES<br />AND QUESTIONS</h2>
-          <span className="text-gray-400 font-bold tracking-widest text-sm hidden md:block mt-4">QUESTIONS</span>
+          <span className="text-gray-400 font-bold tracking-widest text-sm hidden md:block mt-4">WHY US</span>
+          <h2 className={`${logoTextFont.className} text-white text-4xl md:text-7xl lg:text-[6rem] tracking-tight text-center leading-[0.9] uppercase`}>DARK PHANTOM<br />STORE FAQ</h2>
+          <span className="text-gray-400 font-bold tracking-widest text-sm hidden md:block mt-4">FAQ</span>
         </div>
         {/* Adjusted to full width max-w-none */}
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4">
           <div className="flex flex-col gap-4">
             <div className="bg-white border-[3px] border-black rounded-2xl flex flex-col">
-              <h3 className={`${logoTextFont.className} text-3xl md:text-4xl p-6 tracking-tight uppercase`}>Our Advantages</h3>
+              <h3 className={`${logoTextFont.className} text-3xl md:text-4xl p-6 tracking-tight uppercase`}>Why Fans Choose Us</h3>
               <ul className="flex flex-col divide-y-[3px] divide-black border-t-[3px] border-black">
                 {advantages.map((adv, index) => (
                   <li key={index} className="p-4 md:px-6 font-medium text-[15px] flex items-center gap-3">
@@ -207,7 +207,7 @@ export default function LandingPage() {
               </ul>
             </div>
             <div className="bg-white border-[3px] border-black rounded-2xl flex flex-col">
-              <h3 className={`${logoTextFont.className} text-3xl md:text-4xl p-6 tracking-tight uppercase leading-[1.1]`}>Answers to frequently<br />asked questions</h3>
+              <h3 className={`${logoTextFont.className} text-3xl md:text-4xl p-6 tracking-tight uppercase leading-[1.1]`}>Answers to common<br />drop questions</h3>
               <ul className="flex flex-col divide-y-[3px] divide-black border-t-[3px] border-black">
                 {faqs.map((faq, index) => (
                   <li key={index} className="p-4 md:px-6 font-medium text-[15px] flex justify-between items-center gap-4 cursor-pointer hover:bg-gray-50 transition-colors">
@@ -223,7 +223,7 @@ export default function LandingPage() {
                <div className="absolute inset-0 w-full h-full bg-top bg-cover bg-no-repeat" style={{ backgroundImage: 'url(/faqs.png)' }} />
             </div>
             <div className="bg-white border-[3px] border-black rounded-2xl p-2 md:p-3">
-              <button className="w-full bg-[#1a1a1a] hover:bg-black text-white py-5 rounded-xl text-sm font-semibold tracking-wider transition-colors">ANY OTHER QUESTIONS?</button>
+              <button className="w-full bg-[#1a1a1a] hover:bg-black text-white py-5 rounded-xl text-sm font-semibold tracking-wider transition-colors">NEED HELP WITH YOUR ORDER?</button>
             </div>
           </div>
         </div>
@@ -238,7 +238,7 @@ export default function LandingPage() {
           
           {/* Faint Background graphic */}
           <div className="absolute inset-0 opacity-[0.03] flex items-center justify-center pointer-events-none z-0">
-             <span className={`${logoTextFont.className} -rotate-12 text-[180px] leading-none whitespace-nowrap text-black`}>STAGES</span>
+             <span className={`${logoTextFont.className} -rotate-12 text-[180px] leading-none whitespace-nowrap text-black`}>PROCESS</span>
           </div>
 
           {/* Timeline Wrapper */}
@@ -270,7 +270,7 @@ export default function LandingPage() {
           {/* Catalog CTA inside Timeline */}
           <div className="relative z-10 mt-auto pt-4 border-t border-gray-100">
              <Link href="/catalog" className="w-full bg-[#1a1a1a] hover:bg-black text-white rounded-[16px] px-6 py-4 flex items-center justify-between transition-colors shadow-sm">
-                <span className="text-sm font-semibold tracking-wider">CATALOG</span>
+                <span className="text-sm font-semibold tracking-wider">MERCH</span>
                 <MoveRight className="w-5 h-5 text-gray-400" />
               </Link>
           </div>
@@ -280,7 +280,7 @@ export default function LandingPage() {
         <div className="w-full lg:w-[280px] bg-white border-[3px] border-black rounded-2xl relative overflow-hidden flex items-center justify-center min-h-[260px] md:min-h-[500px]">
            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
              <span className={`${logoTextFont.className} rotate-90 text-[64px] md:text-[110px] tracking-tight text-[#1a1a1a] leading-none whitespace-nowrap`}>
-               STAGES OF WORK
+               ORDER JOURNEY
              </span>
            </div>
            
@@ -291,7 +291,7 @@ export default function LandingPage() {
            >
               <div className="absolute inset-0 bg-white opacity-10 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:4px_4px]"></div>
                 <span className={`${logoTextFont.className} rotate-90 text-white text-[28px] md:text-4xl tracking-wide drop-shadow-md z-10 whitespace-nowrap`}>
-                STAGES OF WORK
+                ORDER JOURNEY
               </span>
            </div>
         </div>
@@ -304,14 +304,14 @@ export default function LandingPage() {
         {/* Column 1: Newsletter & Socials */}
         <div className="bg-white border-[3px] border-black rounded-2xl p-8 flex flex-col justify-between min-h-[300px]">
           <div>
-            <h4 className="font-bold text-lg mb-2">Sign Up</h4>
+            <h4 className="font-bold text-lg mb-2">Join The Drop List</h4>
             <p className="text-sm text-gray-600 mb-8 max-w-[250px]">
-              Stay connected for the latest drops and exclusive brand updates
+              Get first alerts for Dark Phantom drops, restocks, and exclusive merch news
             </p>
             <div className="w-full border-b-[2px] border-gray-300 pb-2 mb-6">
               <input 
                 type="email" 
-                placeholder="Email address" 
+                placeholder="Your email" 
                 className="w-full text-sm outline-none text-black placeholder-gray-500 bg-transparent"
               />
             </div>
@@ -324,18 +324,18 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="mt-8">
-             <p className="text-xs text-gray-400 font-medium">VLOM.CUST | US© 2024 All Rights Reserved</p>
+             <p className="text-xs text-gray-400 font-medium">DARK PHANTOM STORE | US 2026 All Rights Reserved</p>
           </div>
         </div>
 
         {/* Column 2: Links */}
         <div className="bg-white border-[3px] border-black rounded-2xl p-8 flex flex-col gap-6">
           <div className="flex items-center justify-between cursor-pointer group">
-            <h4 className="font-bold text-sm tracking-wider">ABOUT US</h4>
+            <h4 className="font-bold text-sm tracking-wider">ABOUT DARK PHANTOM</h4>
             <Plus className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors" />
           </div>
           <div className="flex items-center justify-between cursor-pointer group">
-            <h4 className="font-bold text-sm tracking-wider">INFORMATION</h4>
+            <h4 className="font-bold text-sm tracking-wider">SHIPPING AND RETURNS</h4>
             <Plus className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors" />
           </div>
         </div>
@@ -343,7 +343,7 @@ export default function LandingPage() {
         {/* Column 3: Contact & Scroll Top */}
         <div className="bg-white border-[3px] border-black rounded-2xl p-8 flex flex-col justify-between">
           <div className="flex items-start justify-between">
-            <h4 className="font-bold text-sm tracking-wider">CONTACT</h4>
+            <h4 className="font-bold text-sm tracking-wider">CONTACT SUPPORT</h4>
             <div className="flex flex-col items-end text-black">
               <Plus className="w-6 h-6" />
             </div>
