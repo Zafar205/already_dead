@@ -1,5 +1,6 @@
 import React from 'react';
-import { Menu, Search, Heart, User, MoveRight, Plus, Instagram, Send, MessageCircle, Pin, Video, ChevronUp } from 'lucide-react';
+import Link from 'next/link';
+import { Search, Heart, User, MoveRight, Plus, Instagram, Send, MessageCircle, Pin, Video, ChevronUp } from 'lucide-react';
 import localFont from 'next/font/local';
 
 const logoTextFont = localFont({
@@ -97,10 +98,9 @@ export default function LandingPage() {
       
       {/* Top Navigation */}
       <header className="flex h-14 md:h-16 border-b-[3px] border-black bg-white z-50 relative w-full">
-        <div className="flex-1 flex items-center gap-2 md:gap-4 px-3 md:px-6 border-r-[3px] border-black min-w-0">
-          <Menu className="w-5 h-5 md:w-6 md:h-6 cursor-pointer" strokeWidth={2.5} />
+        <Link href="/catalog" className="flex-1 flex items-center px-3 md:px-6 border-r-[3px] border-black min-w-0">
           <span className="text-xs md:text-sm font-bold tracking-wider md:tracking-widest cursor-pointer truncate">CATALOG</span>
-        </div>
+        </Link>
         <div className="flex-[0.9] md:flex-[2] flex items-center justify-center border-r-[3px] border-black overflow-hidden relative">
           <img src="/already_dead.jpeg" alt="Already Dead" className="h-8 md:h-12 w-auto object-contain" />
         </div>
@@ -177,10 +177,10 @@ export default function LandingPage() {
 
           {/* Bottom Right CTA Card */}
           <div className="border-[3px] border-black rounded-xl bg-white flex items-center justify-center p-6 min-h-[360px]">
-            <button className="bg-[#1a1a1a] hover:bg-black text-white rounded-xl px-6 py-4 flex items-center gap-3 transition-colors shadow-lg">
+            <Link href="/catalog" className="bg-[#1a1a1a] hover:bg-black text-white rounded-xl px-6 py-4 flex items-center gap-3 transition-colors shadow-lg">
               <span className="text-sm font-semibold tracking-wider">VIEW LOOKS</span>
               <MoveRight className="w-5 h-5" />
-            </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -269,10 +269,10 @@ export default function LandingPage() {
 
           {/* Catalog CTA inside Timeline */}
           <div className="relative z-10 mt-auto pt-4 border-t border-gray-100">
-             <button className="w-full bg-[#1a1a1a] hover:bg-black text-white rounded-[16px] px-6 py-4 flex items-center justify-between transition-colors shadow-sm">
+             <Link href="/catalog" className="w-full bg-[#1a1a1a] hover:bg-black text-white rounded-[16px] px-6 py-4 flex items-center justify-between transition-colors shadow-sm">
                 <span className="text-sm font-semibold tracking-wider">CATALOG</span>
                 <MoveRight className="w-5 h-5 text-gray-400" />
-              </button>
+              </Link>
           </div>
         </div>
 

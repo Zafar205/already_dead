@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is a Next.js storefront for ALREADY DEAD.
 
-## Getting Started
+## Order Flow Included
 
-First, run the development server:
+- Collect customer name, email, phone, and optional shipping address on each product page.
+- Create an order record in Supabase before payment.
+- Redirect user to Stripe Checkout.
+- Redirect successful payments to a Thank You page.
+- Handle Stripe webhook events to mark orders as paid.
+- Send paid-order email updates through Nodemailer (SMTP).
+
+## Setup
+
+1. Create env file from template:
+
+```bash
+cp .env.example .env
+```
+
+2. Fill required variables in .env:
+- NEXT_PUBLIC_SITE_URL
+- NEXT_PUBLIC_SUPABASE_URL
+- NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY
+- SUPABASE_SERVICE_ROLE_KEY
+- STRIPE_ENABLED
+- STRIPE_SECRET_KEY
+- STRIPE_WEBHOOK_SECRET
+- ADMIN_EMAIL
+- ADMIN_PASSWORD
+- ADMIN_SESSION_SECRET
+- SMTP_HOST
+- SMTP_PORT
+- SMTP_USER
+- SMTP_PASS
+- SMTP_FROM
+
+3. Apply Supabase migration SQL:
+- Run [supabase/migrations/0001_orders_and_checkout.sql](supabase/migrations/0001_orders_and_checkout.sql) in the Supabase SQL editor.
+- Run [supabase/migrations/0002_products_admin.sql](supabase/migrations/0002_products_admin.sql) in the Supabase SQL editor.
+
+4. Start local development:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Stripe Webhook (Local)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Use the Stripe CLI and point webhook events to the route below:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+stripe listen --forward-to localhost:3000/api/stripe/webhook
+```
 
-## Learn More
+Copy the generated webhook signing secret into STRIPE_WEBHOOK_SECRET in .env.
 
-To learn more about Next.js, take a look at the following resources:
+## Key Routes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Catalog: /catalog
+- Product: /catalog/[slug]
+- Create checkout session API: /api/checkout/create-session
+- Stripe webhook API: /api/stripe/webhook
+- Thank you page: /checkout/success
+- Admin sign in: /admin/sign-in
+- Admin dashboard: /admin
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Admin Defaults
 
-## Deploy on Vercel
+- Default email: mohamedalzafar@gmail.com
+- Default password: 123456
+- You can override using ADMIN_EMAIL and ADMIN_PASSWORD in .env.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Notes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- The server uses SUPABASE_SERVICE_ROLE_KEY for trusted writes from API routes.
+- Do not expose STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET, SMTP credentials, or service role keys in client code.
