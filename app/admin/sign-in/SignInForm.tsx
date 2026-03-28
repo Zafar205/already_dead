@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 
 export default function SignInForm() {
   const router = useRouter();
-  const [email, setEmail] = useState("mohamedalzafar@gmail.com");
-  const [password, setPassword] = useState("123456");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -39,26 +39,28 @@ export default function SignInForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-md rounded-2xl border-[3px] border-black bg-white p-6">
-      <h1 className="text-3xl font-bold uppercase tracking-tight">Admin Sign In</h1>
-      <p className="mt-2 text-sm text-black/70">Use your admin email and password.</p>
+    <form onSubmit={handleSubmit} className="w-full max-w-md rounded-2xl border-[3px] border-black bg-white p-6 text-black">
+      <h1 className="text-3xl font-bold uppercase tracking-tight text-black">Admin Sign In</h1>
+      <p className="mt-2 text-sm text-black">Use your admin email and password.</p>
 
       <div className="mt-5 flex flex-col gap-3">
         <input
           type="email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
+          autoComplete="email"
           required
-          className="h-11 rounded-lg border border-black/20 px-3 text-sm outline-none focus:border-black"
-          placeholder="Email"
+          className="h-11 rounded-lg border border-black/30 px-3 text-sm text-black outline-none placeholder:text-black/45 focus:border-black"
+          placeholder="Admin email"
         />
         <input
           type="password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
+          autoComplete="current-password"
           required
-          className="h-11 rounded-lg border border-black/20 px-3 text-sm outline-none focus:border-black"
-          placeholder="Password"
+          className="h-11 rounded-lg border border-black/30 px-3 text-sm text-black outline-none placeholder:text-black/45 focus:border-black"
+          placeholder="Admin password"
         />
       </div>
 

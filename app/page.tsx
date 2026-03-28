@@ -1,31 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
-import { Search, Heart, User, MoveRight, Plus, Instagram, Send, MessageCircle, Pin, Video } from 'lucide-react';
+import { MoveRight, Plus, Instagram, Send, MessageCircle, Pin, Video } from 'lucide-react';
 import localFont from 'next/font/local';
+import TopNav from './components/TopNav';
+import { getAllProducts } from '@/lib/productsRepo';
 
 const logoTextFont = localFont({
   src: '../public/another_danger.otf',
   display: 'swap',
 });
-
-// Mock Data for the products
-const products = [
-  {
-    id: 1, title: "DARK PHANTOM SHADOW TEE", color: "Ash Grey", oldPrice: 60, price: 39, discount: "DROP PRICE", image: "/product_1.jpeg"
-  },
-  {
-    id: 2, title: "PHANTOM UTILITY WALLET", color: "Concrete Grey", price: 39, image: "/product_2.jpeg"
-  },
-  {
-    id: 3, title: "VOID SIGNAL BACKPACK", color: "Midnight Black", oldPrice: 92, price: 78, discount: "DROP PRICE", image: "/product_3.jpeg"
-  },
-  {
-    id: 4, title: "NIGHT RAID JACKET", color: "Smoke Grey", price: 39, image: "/product_4.jpeg"
-  },
-  {
-    id: 5, title: "DARK PHANTOM RUNNERS", color: "Black and White", oldPrice: 69, price: 55, discount: "DROP PRICE", image: "/product_2.jpeg"
-  }
-];
 
 // Mock Data for Advantages & FAQs
 const advantages = [
@@ -92,25 +75,14 @@ const timelineStages = [
   }
 ];
 
-export default function LandingPage() {
+export default async function LandingPage() {
+  const products = (await getAllProducts()).slice(0, 4);
+
   return (
     <div id="top" className="min-h-screen bg-[#f5f5f5] text-black flex flex-col font-sans overflow-x-hidden">
       
       {/* Top Navigation */}
-      <header className="flex h-14 md:h-16 border-b-[3px] border-black bg-white z-50 relative w-full">
-        <Link href="/catalog" className="flex-1 flex items-center px-3 md:px-6 border-r-[3px] border-black min-w-0">
-          <span className="text-xs md:text-sm font-bold tracking-wider md:tracking-widest cursor-pointer truncate">MERCH</span>
-        </Link>
-        <div className="flex-[0.9] md:flex-[2] flex items-center justify-center border-r-[3px] border-black overflow-hidden relative">
-          <img src="/already_dead.jpeg" alt="Dark Phantom Store" className="h-8 md:h-12 w-auto object-contain" />
-        </div>
-        <div className="flex-1 flex items-center justify-end gap-3 md:gap-6 px-3 md:px-6 text-xs md:text-sm font-semibold tracking-wide">
-          <Search className="w-4 h-4 md:w-5 md:h-5 cursor-pointer" strokeWidth={2.5} />
-          <Heart className="w-4 h-4 md:w-5 md:h-5 cursor-pointer" strokeWidth={2.5} />
-          <User className="w-4 h-4 md:w-5 md:h-5 cursor-pointer" strokeWidth={2.5} />
-          <span className="cursor-pointer ml-1 md:ml-2">BAG (0)</span>
-        </div>
-      </header>
+      <TopNav />
 
       {/* Hero Section */}
       <main className="relative flex flex-col items-center justify-start w-full h-[78vh] md:h-[95vh] bg-white overflow-hidden">
@@ -161,14 +133,13 @@ export default function LandingPage() {
             <div key={product.id} className="border-[3px] border-black rounded-xl bg-white flex flex-col relative aspect-square lg:aspect-auto min-h-[360px] p-2 hover:-translate-y-1 transition-transform duration-300">
               <div className="flex-1 w-full flex items-center justify-center p-6 relative bg-white rounded-t-lg">
                 <img src={product.image} alt={product.title} className="max-w-full max-h-[200px] object-contain drop-shadow-sm" />
-                {product.discount && <span className="absolute bottom-2 left-2 text-[11px] font-bold text-gray-400 tracking-wider">{product.discount}</span>}
+                <span className="absolute bottom-2 left-2 text-[11px] font-bold text-gray-400 tracking-wider">DROP PRICE</span>
                 <Plus className="absolute bottom-2 right-2 w-5 h-5 text-gray-400 cursor-pointer hover:text-black transition-colors" />
               </div>
               <div className="pb-4 px-4 flex flex-col items-center justify-end text-center mt-auto">
-                <h4 className={`${logoTextFont.className} text-[16px] uppercase tracking-wide mb-1 text-black`}>{product.title}</h4>
+                <h4 className={`${logoTextFont.className} text-[16px] tracking-wide mb-1 text-black`}>{product.title}</h4>
                 <p className="text-gray-400 text-[13px] mb-1">{product.color}</p>
                 <div className="text-[13px]">
-                  {product.oldPrice && <span className="line-through text-gray-400 mr-2">${product.oldPrice}</span>}
                   <span className="font-bold text-black">${product.price}</span>
                 </div>
               </div>

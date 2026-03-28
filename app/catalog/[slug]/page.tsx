@@ -58,7 +58,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
           <div className="rounded-2xl border-[3px] border-black bg-white p-6 md:p-8">
             <p className="text-xs font-semibold tracking-[0.22em] text-black/60">DARK PHANTOM / MERCH</p>
-            <h1 className="mt-3 text-3xl font-bold uppercase tracking-tight md:text-5xl">{product.title}</h1>
+            <h1 className="mt-3 text-3xl font-bold tracking-tight md:text-5xl">{product.title}</h1>
             <p className="mt-3 text-sm text-black/70">Color: {product.color}</p>
             <p className="mt-1 text-xl font-bold">${product.price}</p>
 
@@ -101,7 +101,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
-                <h3 className="text-base font-bold uppercase tracking-tight">{item.title}</h3>
+                <h3 className="text-base font-bold tracking-tight">{item.title}</h3>
                 <p className="text-sm text-black/60">{item.color}</p>
                 <p className="mt-2 text-sm font-semibold">${item.price}</p>
               </Link>
