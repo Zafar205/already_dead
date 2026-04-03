@@ -33,6 +33,7 @@
 	- Handles Stripe checkout completion and paid email flow.
 - `POST /api/admin/sign-in`
 - `POST /api/admin/sign-out`
+- `GET/PATCH /api/admin/account`
 - `GET/POST /api/admin/products`
 - `DELETE /api/admin/products/[id]`
 - `POST /api/admin/upload-image`
@@ -43,13 +44,14 @@
 
 ## Admin Auth
 - Cookie-based signed session (`already_dead_admin_session`).
-- Defaults coded for development:
+- Defaults coded for development and env fallback:
 	- Email: `mohamedalzafar@gmail.com`
 	- Password: `123456`
 - Override via env:
 	- `ADMIN_EMAIL`
 	- `ADMIN_PASSWORD`
 	- `ADMIN_SESSION_SECRET`
+- Persistent credentials now supported through `admin_credentials` table (hashed password), editable from `/admin`.
 
 ## Product Source of Truth
 - Storefront now reads products from Supabase `products` table via repo helper.
@@ -67,6 +69,8 @@
 	- Creates `products` + seed product rows + RLS.
 - `supabase/migrations/0003_orders_add_delivered_status.sql`
 	- Updates order status check to include `delivered`.
+- `supabase/migrations/0004_admin_credentials.sql`
+	- Creates `admin_credentials` table used by admin account settings.
 
 ## Environment Variables
 Expected in `.env`:

@@ -14,16 +14,17 @@ type SignInBody = {
 
 export async function POST(request: Request) {
   const body = (await request.json()) as SignInBody;
+  const email = body.email?.trim();
 
-  if (!body.email || !body.password) {
+  if (!email || !body.password) {
     return NextResponse.json({ error: "Email and password are required." }, { status: 400 });
   }
 
-  if (!isValidAdminCredentials(body.email, body.password)) {
+  if (!(await isValidAdminCredentials(email, body.password))) {
     return NextResponse.json({ error: "Invalid credentials." }, { status: 401 });
   }
 
-  const token = createAdminSessionToken(body.email);
+  const token = createAdminSessionToken(email);
   const response = NextResponse.json({ ok: true });
 
   response.cookies.set({

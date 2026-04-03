@@ -16,7 +16,7 @@ function isMissingProductsTableError(message: string) {
 }
 
 export async function DELETE(request: NextRequest, context: RouteContext) {
-  if (!isAdminRequest(request)) {
+  if (!(await isAdminRequest(request))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 

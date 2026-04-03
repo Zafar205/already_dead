@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 type Product = {
   id: number;
@@ -32,6 +32,14 @@ type Props = {
 export default function AdminPanelClient({ initialProducts, initialOrders }: Props) {
   const [products, setProducts] = useState(initialProducts);
   const [orders, setOrders] = useState(initialOrders);
+  const [accountEmail, setAccountEmail] = useState("");
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const [accountLoading, setAccountLoading] = useState(true);
+  const [accountSaving, setAccountSaving] = useState(false);
+  const [accountMessage, setAccountMessage] = useState<string | null>(null);
+  const [accountError, setAccountError] = useState<string | null>(null);
   const [title, setTitle] = useState("");
   const [color, setColor] = useState("");
   const [price, setPrice] = useState("");
@@ -54,6 +62,45 @@ export default function AdminPanelClient({ initialProducts, initialOrders }: Pro
 
   const previewProducts = products.slice(0, 5);
   const previewOrders = formattedOrders.slice(0, 5);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadAccountSettings() {
+      setAccountError(null);
+
+      try {
+        const response = await fetch("/api/admin/account", {
+          method: "GET",
+          cache: "no-store",
+        });
+
+        const data = (await response.json()) as { email?: string; error?: string };
+
+        if (!response.ok || !data.email) {
+          throw new Error(data.error ?? "Failed to load account settings.");
+        }
+
+        if (!cancelled) {
+          setAccountEmail(data.email);
+        }
+      } catch (fetchError) {
+        if (!cancelled) {
+          setAccountError(fetchError instanceof Error ? fetchError.message : "Failed to load account settings.");
+        }
+      } finally {
+        if (!cancelled) {
+          setAccountLoading(false);
+        }
+      }
+    }
+
+    void loadAccountSettings();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   async function handleCreateProduct(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -149,6 +196,58 @@ export default function AdminPanelClient({ initialProducts, initialOrders }: Pro
     setSigningOut(true);
     await fetch("/api/admin/sign-out", { method: "POST" });
     window.location.href = "/admin/sign-in";
+  }
+
+  async function handleUpdateAccount(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setAccountError(null);
+    setAccountMessage(null);
+
+    const trimmedEmail = accountEmail.trim();
+
+    if (!trimmedEmail) {
+      setAccountError("Email is required.");
+      return;
+    }
+
+    if (newPassword && newPassword !== confirmNewPassword) {
+      setAccountError("New password and confirmation do not match.");
+      return;
+    }
+
+    setAccountSaving(true);
+
+    try {
+      const response = await fetch("/api/admin/account", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: trimmedEmail,
+          currentPassword,
+          newPassword: newPassword || undefined,
+        }),
+      });
+
+      const data = (await response.json()) as { email?: string; message?: string; error?: string };
+
+      if (!response.ok) {
+        throw new Error(data.error ?? "Failed to update account details.");
+      }
+
+      setAccountEmail(data.email ?? trimmedEmail);
+      setCurrentPassword("");
+      setNewPassword("");
+      setConfirmNewPassword("");
+      setAccountMessage(data.message ?? "Admin login details updated.");
+    } catch (updateError) {
+      setAccountError(
+        updateError instanceof Error ? updateError.message : "Failed to update account details.",
+      );
+    } finally {
+      setAccountSaving(false);
+    }
   }
 
   function handleImageChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -307,6 +406,80 @@ export default function AdminPanelClient({ initialProducts, initialOrders }: Pro
             </div>
           </section>
         </div>
+
+        <section className="rounded-2xl border-[3px] border-black bg-white p-6">
+          <h2 className="text-2xl font-bold uppercase tracking-tight">Account Settings</h2>
+          <p className="mt-2 text-sm text-black/65">Update the admin sign-in email and password.</p>
+
+          <form className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2" onSubmit={handleUpdateAccount}>
+            <label className="md:col-span-2">
+              <span className="mb-1 block text-xs font-semibold uppercase tracking-[0.1em] text-black/65">Email</span>
+              <input
+                type="email"
+                value={accountEmail}
+                onChange={(event) => setAccountEmail(event.target.value)}
+                required
+                className="h-11 w-full rounded-lg border border-black/20 px-3 text-sm outline-none focus:border-black"
+              />
+            </label>
+
+            <label>
+              <span className="mb-1 block text-xs font-semibold uppercase tracking-[0.1em] text-black/65">
+                Current password
+              </span>
+              <input
+                type="password"
+                value={currentPassword}
+                onChange={(event) => setCurrentPassword(event.target.value)}
+                autoComplete="current-password"
+                required
+                className="h-11 w-full rounded-lg border border-black/20 px-3 text-sm outline-none focus:border-black"
+              />
+            </label>
+
+            <label>
+              <span className="mb-1 block text-xs font-semibold uppercase tracking-[0.1em] text-black/65">
+                New password
+              </span>
+              <input
+                type="password"
+                value={newPassword}
+                onChange={(event) => setNewPassword(event.target.value)}
+                autoComplete="new-password"
+                placeholder="Leave blank to keep current"
+                className="h-11 w-full rounded-lg border border-black/20 px-3 text-sm outline-none focus:border-black"
+              />
+            </label>
+
+            <label className="md:col-span-2">
+              <span className="mb-1 block text-xs font-semibold uppercase tracking-[0.1em] text-black/65">
+                Confirm new password
+              </span>
+              <input
+                type="password"
+                value={confirmNewPassword}
+                onChange={(event) => setConfirmNewPassword(event.target.value)}
+                autoComplete="new-password"
+                placeholder="Repeat new password"
+                className="h-11 w-full rounded-lg border border-black/20 px-3 text-sm outline-none focus:border-black"
+              />
+            </label>
+
+            <div className="md:col-span-2">
+              <button
+                type="submit"
+                disabled={accountLoading || accountSaving}
+                className="rounded-full bg-black px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white disabled:opacity-60"
+              >
+                {accountSaving ? "Updating..." : "Update login details"}
+              </button>
+            </div>
+          </form>
+
+          {accountLoading ? <p className="mt-3 text-sm text-black/60">Loading account settings...</p> : null}
+          {accountMessage ? <p className="mt-3 text-sm font-medium text-green-700">{accountMessage}</p> : null}
+          {accountError ? <p className="mt-3 text-sm font-medium text-red-700">{accountError}</p> : null}
+        </section>
 
         <section className="rounded-2xl border-[3px] border-black bg-white p-6">
           <div className="flex items-center justify-between gap-3">

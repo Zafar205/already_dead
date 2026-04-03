@@ -37,6 +37,8 @@ cp .env.example .env
 3. Apply Supabase migration SQL:
 - Run [supabase/migrations/0001_orders_and_checkout.sql](supabase/migrations/0001_orders_and_checkout.sql) in the Supabase SQL editor.
 - Run [supabase/migrations/0002_products_admin.sql](supabase/migrations/0002_products_admin.sql) in the Supabase SQL editor.
+- Run [supabase/migrations/0003_orders_add_delivered_status.sql](supabase/migrations/0003_orders_add_delivered_status.sql) in the Supabase SQL editor.
+- Run [supabase/migrations/0004_admin_credentials.sql](supabase/migrations/0004_admin_credentials.sql) in the Supabase SQL editor.
 
 4. Start local development:
 
@@ -69,6 +71,7 @@ Copy the generated webhook signing secret into STRIPE_WEBHOOK_SECRET in .env.
 - Default email: mohamedalzafar@gmail.com
 - Default password: 123456
 - You can override using ADMIN_EMAIL and ADMIN_PASSWORD in .env.
+- After running migration `0004`, you can update admin email/password from `/admin` under **Account Settings**.
 
 ## Notes
 

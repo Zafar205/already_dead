@@ -15,7 +15,7 @@ type UpdateOrderStatusBody = {
 };
 
 export async function PATCH(request: NextRequest, context: RouteContext) {
-  if (!isAdminRequest(request)) {
+  if (!(await isAdminRequest(request))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
