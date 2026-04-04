@@ -18,12 +18,12 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 
   if (!product) {
     return {
-      title: "Product Not Found | Dark Phantom Store",
+      title: "Product Not Found | Already Dead Store",
     };
   }
 
   return {
-    title: `${product.title} | Dark Phantom Store`,
+    title: `${product.title} | Already Dead Store`,
     description: product.description,
   };
 }
@@ -57,7 +57,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </div>
 
           <div className="rounded-2xl border-[3px] border-black bg-white p-6 md:p-8">
-            <p className="text-xs font-semibold tracking-[0.22em] text-black/60">DARK PHANTOM / MERCH</p>
+            <p className="text-xs font-semibold tracking-[0.22em] text-black/60"> Already Dead / MERCH</p>
             <h1 className="mt-3 text-3xl font-bold tracking-tight md:text-5xl">{product.title}</h1>
             <p className="mt-3 text-sm text-black/70">Color: {product.color}</p>
             <p className="mt-1 text-xl font-bold">${product.price}</p>
@@ -79,7 +79,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
         <section className="mx-auto mt-10 w-full max-w-6xl">
           <div className="mb-4 flex items-center justify-between gap-3">
-            <h2 className="text-2xl font-bold uppercase tracking-tight md:text-3xl">More Dark Phantom Picks</h2>
+            <h2 className="text-2xl font-bold uppercase tracking-tight md:text-3xl">More Already Dead Picks</h2>
             <Link href="/catalog" className="text-xs font-semibold uppercase tracking-[0.16em] hover:underline">
               View all merch
             </Link>

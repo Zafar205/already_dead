@@ -29,12 +29,12 @@ export default async function CheckoutSuccessPage({ searchParams }: SuccessPageP
         <h1 className="mt-3 text-4xl font-bold uppercase tracking-tight md:text-6xl">You Are In</h1>
         {isManualMode ? (
           <p className="mt-4 text-sm leading-6 text-black/75 md:text-base">
-            Your Dark Phantom merch order has been received. Payments are currently handled manually, and we have
+            Your Already Dead merch order has been received. Payments are currently handled manually, and we have
             emailed your order details.
           </p>
         ) : isPaymentConfirmed ? (
           <p className="mt-4 text-sm leading-6 text-black/75 md:text-base">
-            Your Dark Phantom merch order is confirmed and your payment is complete. We sent an email with all
+            Your Already Dead merch order is confirmed and your payment is complete. We sent an email with all
             order details.
           </p>
         ) : (
