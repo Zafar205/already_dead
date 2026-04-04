@@ -138,18 +138,20 @@ export default async function LandingPage() {
           {/* Product Cards */}
           {products.map((product, index) => (
             <ScrollReveal direction="up" delay={0.1 + (index * 0.1)} key={product.id} className="border-[3px] border-black rounded-xl bg-white flex flex-col relative aspect-square lg:aspect-auto min-h-[360px] p-2 hover:-translate-y-1 transition-transform duration-300">
-              <div className="flex-1 w-full flex items-center justify-center p-6 relative bg-white rounded-t-lg">
-                <img src={product.image} alt={product.title} className="max-w-full max-h-[200px] object-contain drop-shadow-sm" />
-                <span className="absolute bottom-2 left-2 text-[11px] font-bold text-gray-400 tracking-wider">DROP PRICE</span>
-                <Plus className="absolute bottom-2 right-2 w-5 h-5 text-gray-400 cursor-pointer hover:text-black transition-colors" />
-              </div>
-              <div className="pb-4 px-4 flex flex-col items-center justify-end text-center mt-auto">
-                <h4 className={`${logoTextFont.className} text-[16px] tracking-wide mb-1 text-black`}>{product.title}</h4>
-                <p className="text-gray-400 text-[13px] mb-1">{product.color}</p>
-                <div className="text-[13px]">
-                  <span className="font-bold text-black">${product.price}</span>
+              <Link href={`/catalog/${product.slug}`} className="group flex h-full w-full cursor-pointer flex-col" aria-label={`Open ${product.title}`}>
+                <div className="flex-1 w-full flex items-center justify-center p-6 relative bg-white rounded-t-lg">
+                  <img src={product.image} alt={product.title} className="max-w-full max-h-[200px] object-contain drop-shadow-sm" />
+                  <span className="absolute bottom-2 left-2 text-[11px] font-bold text-gray-400 tracking-wider">DROP PRICE</span>
+                  <Plus className="absolute bottom-2 right-2 w-5 h-5 text-gray-400 group-hover:text-black transition-colors" />
                 </div>
-              </div>
+                <div className="pb-4 px-4 flex flex-col items-center justify-end text-center mt-auto">
+                  <h4 className={`${logoTextFont.className} text-[16px] tracking-wide mb-1 text-black`}>{product.title}</h4>
+                  <p className="text-gray-400 text-[13px] mb-1">{product.color}</p>
+                  <div className="text-[13px]">
+                    <span className="font-bold text-black">${product.price}</span>
+                  </div>
+                </div>
+              </Link>
             </ScrollReveal>
           ))}
 
