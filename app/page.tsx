@@ -11,6 +11,8 @@ const logoTextFont = localFont({
   display: 'swap',
 });
 
+export const dynamic = "force-dynamic";
+
 // Mock Data for Advantages & FAQs
 const advantages = [
   "Official merch direction inspired by Dark Phantom visuals",
