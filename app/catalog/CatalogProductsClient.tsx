@@ -14,6 +14,12 @@ const FILTER_OPTIONS: Array<{ label: string; value: Category }> = [
   { label: "Hoodies", value: "hoodies" },
 ];
 
+const CATEGORY_TITLE_MATCHERS: Record<Exclude<Category, "all">, RegExp> = {
+  "t-shirts": /\b(t[\s-]?shirt|tee|shirt)\b/i,
+  jackets: /\bjackets?\b/i,
+  hoodies: /\b(hoodie|hooded|sweatshirt)\b/i,
+};
+
 type CatalogProductsClientProps = {
   products: Product[];
   initialCategory?: string;
@@ -26,7 +32,7 @@ function normalizeCategory(category?: string): Category {
 
   const normalized = category.toLowerCase();
 
-  if (normalized === "t-shirts" || normalized === "tshirt" || normalized === "t-shirts") {
+  if (normalized === "t-shirts" || normalized === "tshirt" || normalized === "t-shirt") {
     return "t-shirts";
   }
 
@@ -41,22 +47,12 @@ function normalizeCategory(category?: string): Category {
   return "all";
 }
 
-function getProductCategory(product: Product): Category {
-  const text = `${product.title} ${product.slug}`.toLowerCase();
-
-  if (text.includes("hoodie")) {
-    return "hoodies";
+function matchesCategoryByTitle(title: string, category: Category): boolean {
+  if (category === "all") {
+    return true;
   }
 
-  if (text.includes("jacket")) {
-    return "jackets";
-  }
-
-  if (text.includes("shirt") || text.includes("tee") || text.includes("t-shirt") || text.includes("tshirt")) {
-    return "t-shirts";
-  }
-
-  return "all";
+  return CATEGORY_TITLE_MATCHERS[category].test(title);
 }
 
 export default function CatalogProductsClient({ products, initialCategory }: CatalogProductsClientProps) {
@@ -71,11 +67,10 @@ export default function CatalogProductsClient({ products, initialCategory }: Cat
     const normalizedQuery = query.trim().toLowerCase();
 
     return products.filter((product) => {
-      const category = getProductCategory(product);
       const title = product.title.toLowerCase();
       const color = product.color.toLowerCase();
 
-      const matchesCategory = selectedCategory === "all" || category === selectedCategory;
+      const matchesCategory = matchesCategoryByTitle(product.title, selectedCategory);
       const matchesQuery = !normalizedQuery || title.includes(normalizedQuery) || color.includes(normalizedQuery);
 
       return matchesCategory && matchesQuery;
