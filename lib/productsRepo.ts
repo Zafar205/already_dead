@@ -7,10 +7,40 @@ type ProductRow = {
   title: string;
   color: string;
   price: number;
-  image: string;
+  image: string | null;
   description: string;
   created_at?: string;
 };
+
+const FALLBACK_PRODUCT_IMAGE = "/product_1.jpeg";
+
+function normalizeProductImage(image: string | null | undefined): string {
+  if (typeof image !== "string") {
+    return FALLBACK_PRODUCT_IMAGE;
+  }
+
+  const trimmed = image.trim();
+
+  if (!trimmed) {
+    return FALLBACK_PRODUCT_IMAGE;
+  }
+
+  if (/^https?:\/\//i.test(trimmed)) {
+    try {
+      // Ensure malformed absolute URLs never reach next/image.
+      new URL(trimmed);
+      return trimmed;
+    } catch {
+      return FALLBACK_PRODUCT_IMAGE;
+    }
+  }
+
+  if (trimmed.startsWith("/")) {
+    return trimmed;
+  }
+
+  return `/${trimmed.replace(/^\.?\//, "")}`;
+}
 
 function normalizeRow(row: ProductRow): Product {
   return {
@@ -19,7 +49,7 @@ function normalizeRow(row: ProductRow): Product {
     title: row.title,
     color: row.color,
     price: row.price,
-    image: row.image,
+    image: normalizeProductImage(row.image),
     description: row.description,
   };
 }

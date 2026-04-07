@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { MoveRight, Plus, Instagram, Send, MessageCircle, Pin, Video } from 'lucide-react';
+import { MoveRight, Plus } from 'lucide-react';
 import localFont from 'next/font/local';
 import TopNav from './components/TopNav';
 import { getAllProducts } from '@/lib/productsRepo';
@@ -166,7 +166,7 @@ export default async function LandingPage() {
       </section>
 
       {/* FAQ & ADVANTAGES SECTION */}
-      <section className="w-full bg-[#1a1a1a] py-10 md:py-16 px-4 md:px-6 flex flex-col items-center border-y-[3px] border-black">
+      <section id="faq" className="w-full bg-[#1a1a1a] py-10 md:py-16 px-4 md:px-6 flex flex-col items-center border-y-[3px] border-black">
         {/* Adjusted to full width max-w-none */}
         <ScrollReveal direction="up" className="w-full flex justify-between items-start mb-10">
           <span className="text-gray-400 font-bold tracking-widest text-sm hidden md:block mt-4">WHY US</span>
@@ -284,58 +284,84 @@ export default async function LandingPage() {
       </section>
 
       {/* --- NEW FOOTER --- */}
-      {/* Adjusted to full width with px-6 padding */}
-      <footer className="w-full px-4 md:px-6 mx-auto mb-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-        
-        {/* Column 1: Newsletter & Socials */}
-        <ScrollReveal direction="up" delay={0.1} className="bg-white border-[3px] border-black rounded-2xl p-8 flex flex-col justify-between min-h-[300px]">
-          <div>
-            <h4 className="font-bold text-lg mb-2">Join The Drop List</h4>
-            <p className="text-sm text-gray-600 mb-8 max-w-[250px]">
-              Get first alerts for Dark Phantom drops, restocks, and exclusive merch news
-            </p>
-            <div className="w-full border-b-[2px] border-gray-300 pb-2 mb-6">
-              <input 
-                type="email" 
-                placeholder="Your email" 
-                className="w-full text-sm outline-none text-black placeholder-gray-500 bg-transparent"
-              />
+      <footer className="w-full px-4 md:px-6 mx-auto mb-6">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <ScrollReveal direction="up" delay={0.1} className="bg-white border-[3px] border-black rounded-2xl p-8 flex flex-col justify-between min-h-[300px]">
+            <div>
+              <h4 className="font-bold text-sm tracking-[0.16em]">FOLLOW DARK PHANTOM</h4>
+              <p className="mt-3 text-sm text-gray-600 max-w-[320px]">
+                Stay tapped in for drops, restocks, and behind-the-scenes updates across every platform.
+              </p>
+              <div className="mt-6 flex flex-col gap-3">
+                <a
+                  href="https://x.com/DRKPhantom2013"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-between rounded-xl border-[2px] border-black px-3 py-2 transition-colors hover:bg-black hover:text-white"
+                >
+                  <span className="text-sm font-semibold">X / Twitter</span>
+                  <MoveRight className="h-4 w-4 text-gray-500 transition group-hover:text-white" />
+                </a>
+                <a
+                  href="https://www.instagram.com/darkphantom2013/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-between rounded-xl border-[2px] border-black px-3 py-2 transition-colors hover:bg-black hover:text-white"
+                >
+                  <span className="text-sm font-semibold">Instagram</span>
+                  <MoveRight className="h-4 w-4 text-gray-500 transition group-hover:text-white" />
+                </a>
+                <a
+                  href="https://www.threads.com/@darkphantom2013?xmt=AQF0yGRwTZF-J6Zv4-MvxBEk5hDVdYuvja_MMm8MmBD_rMs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-between rounded-xl border-[2px] border-black px-3 py-2 transition-colors hover:bg-black hover:text-white"
+                >
+                  <span className="text-sm font-semibold">Threads</span>
+                  <MoveRight className="h-4 w-4 text-gray-500 transition group-hover:text-white" />
+                </a>
+              </div>
             </div>
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-[#1a1a1a] rounded-md flex items-center justify-center text-white hover:bg-black cursor-pointer"><MessageCircle className="w-4 h-4" /></div>
-              <div className="w-8 h-8 bg-[#1a1a1a] rounded-md flex items-center justify-center text-white hover:bg-black cursor-pointer"><Pin className="w-4 h-4" /></div>
-              <div className="w-8 h-8 bg-[#1a1a1a] rounded-md flex items-center justify-center text-white hover:bg-black cursor-pointer"><Instagram className="w-4 h-4" /></div>
-              <div className="w-8 h-8 bg-[#1a1a1a] rounded-md flex items-center justify-center text-white hover:bg-black cursor-pointer"><Video className="w-4 h-4" /></div>
-              <div className="w-8 h-8 bg-[#1a1a1a] rounded-md flex items-center justify-center text-white hover:bg-black cursor-pointer"><Send className="w-4 h-4" /></div>
+            <p className="mt-8 text-xs text-gray-500 font-medium">DARK PHANTOM STORE | US 2026 All Rights Reserved</p>
+          </ScrollReveal>
+
+          <ScrollReveal direction="up" delay={0.2} className="bg-white border-[3px] border-black rounded-2xl p-8 flex flex-col justify-between min-h-[300px]">
+            <div>
+              <h4 className="font-bold text-sm tracking-[0.16em]">ABOUT + SHIPPING</h4>
+              <p className="mt-3 text-sm text-gray-600">
+                Official Dark Phantom merch. Limited drops, secure checkout, and order help through support channels.
+              </p>
+              <div className="mt-6 flex flex-col gap-3">
+                <Link href="/catalog" className="group flex items-center justify-between rounded-xl border-[2px] border-black px-3 py-2 transition-colors hover:bg-black hover:text-white">
+                  <span className="text-sm font-semibold">Shop Merch</span>
+                  <MoveRight className="h-4 w-4 text-gray-500 transition group-hover:text-white" />
+                </Link>
+                <Link href="/#faq" className="group flex items-center justify-between rounded-xl border-[2px] border-black px-3 py-2 transition-colors hover:bg-black hover:text-white">
+                  <span className="text-sm font-semibold">Shipping and Returns</span>
+                  <MoveRight className="h-4 w-4 text-gray-500 transition group-hover:text-white" />
+                </Link>
+                <Link href="/#top" className="group flex items-center justify-between rounded-xl border-[2px] border-black px-3 py-2 transition-colors hover:bg-black hover:text-white">
+                  <span className="text-sm font-semibold">Back to Top</span>
+                  <MoveRight className="h-4 w-4 text-gray-500 transition group-hover:text-white" />
+                </Link>
+              </div>
             </div>
-          </div>
-          <div className="mt-8">
-             <p className="text-xs text-gray-400 font-medium">DARK PHANTOM STORE | US 2026 All Rights Reserved</p>
-          </div>
-        </ScrollReveal>
+          </ScrollReveal>
 
-        {/* Column 2: Links */}
-        <ScrollReveal direction="up" delay={0.2} className="bg-white border-[3px] border-black rounded-2xl p-8 flex flex-col gap-6">
-          <div className="flex items-center justify-between cursor-pointer group">
-            <h4 className="font-bold text-sm tracking-wider">ABOUT DARK PHANTOM</h4>
-            <Plus className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors" />
-          </div>
-          <div className="flex items-center justify-between cursor-pointer group">
-            <h4 className="font-bold text-sm tracking-wider">SHIPPING AND RETURNS</h4>
-            <Plus className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors" />
-          </div>
-        </ScrollReveal>
-
-        {/* Column 3: Contact & Scroll Top */}
-        <ScrollReveal direction="up" delay={0.3} className="bg-white border-[3px] border-black rounded-2xl p-8 flex flex-col justify-between">
-          <div className="flex items-start justify-between">
-            <h4 className="font-bold text-sm tracking-wider">CONTACT SUPPORT</h4>
-            <div className="flex flex-col items-end text-black">
-              <Plus className="w-6 h-6" />
+          <ScrollReveal direction="up" delay={0.3} className="bg-white border-[3px] border-black rounded-2xl p-8 flex flex-col justify-between min-h-[300px]">
+            <div>
+              <h4 className="font-bold text-sm tracking-[0.16em]">CONTACT SUPPORT</h4>
+              <p className="mt-3 text-sm text-gray-600">
+                Need order help? Reach the team directly in Discord and we will get back to you.
+              </p>
+              <div className="mt-6 flex flex-col gap-3 text-sm font-semibold">
+                <a href="https://discord.gg/JhwDQMBcXE" target="_blank" rel="noopener noreferrer" className="rounded-xl border-[2px] border-black px-3 py-2 transition-colors hover:bg-black hover:text-white">
+                  Discord Server
+                </a>
+              </div>
             </div>
-          </div>
-        </ScrollReveal>
-
+          </ScrollReveal>
+        </div>
       </footer>
     </div>
   );

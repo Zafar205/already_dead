@@ -18,6 +18,23 @@ function getSiteUrl() {
   return process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 }
 
+function buildAbsoluteImageUrl(image: string, siteUrl: string) {
+  const trimmedImage = image.trim();
+
+  if (/^https?:\/\//i.test(trimmedImage)) {
+    try {
+      new URL(trimmedImage);
+      return trimmedImage;
+    } catch {
+      return `${siteUrl.replace(/\/$/, "")}/product_1.jpeg`;
+    }
+  }
+
+  const normalizedSiteUrl = siteUrl.replace(/\/$/, "");
+  const normalizedPath = trimmedImage.startsWith("/") ? trimmedImage : `/${trimmedImage}`;
+  return `${normalizedSiteUrl}${normalizedPath}`;
+}
+
 function isStripeEnabled() {
   return process.env.STRIPE_ENABLED === "true";
 }
@@ -138,7 +155,7 @@ export async function POST(request: Request) {
             product_data: {
               name: product.title,
               description: product.description,
-              images: [`${siteUrl}${product.image}`],
+              images: [buildAbsoluteImageUrl(product.image, siteUrl)],
             },
           },
         },

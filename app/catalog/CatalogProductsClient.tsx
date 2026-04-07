@@ -25,6 +25,31 @@ type CatalogProductsClientProps = {
   initialCategory?: string;
 };
 
+const FALLBACK_PRODUCT_IMAGE = "/product_1.jpeg";
+
+function getSafeImageSrc(image: string): string {
+  const trimmed = typeof image === "string" ? image.trim() : "";
+
+  if (!trimmed) {
+    return FALLBACK_PRODUCT_IMAGE;
+  }
+
+  if (/^https?:\/\//i.test(trimmed)) {
+    try {
+      new URL(trimmed);
+      return trimmed;
+    } catch {
+      return FALLBACK_PRODUCT_IMAGE;
+    }
+  }
+
+  if (trimmed.startsWith("/")) {
+    return trimmed;
+  }
+
+  return `/${trimmed.replace(/^\.?\//, "")}`;
+}
+
 function normalizeCategory(category?: string): Category {
   if (!category) {
     return "all";
@@ -127,7 +152,7 @@ export default function CatalogProductsClient({ products, initialCategory }: Cat
             >
               <div className="relative mb-4 aspect-square overflow-hidden rounded-xl border border-black/10 bg-[#efefef]">
                 <Image
-                  src={product.image}
+                  src={getSafeImageSrc(product.image)}
                   alt={product.title}
                   fill
                   className="object-cover grayscale transition duration-300 group-hover:scale-105"
